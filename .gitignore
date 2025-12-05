@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
@@ -35,3 +36,30 @@ build/
 ### Application ###
 application-local.yml
 uploads/
+=======
+﻿# Build outputs
+target/
+build/
+*.jar
+*.war
+
+# Uploads
+uploads/
+
+# Gradle
+.gradle/
+
+# IDE
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+>>>>>>> eee3e141e3c6272d26ae9471c7c2ab332b1fea73
