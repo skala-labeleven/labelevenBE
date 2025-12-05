@@ -1,4 +1,4 @@
-﻿package com.labeleven;
+package com.labeleven;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

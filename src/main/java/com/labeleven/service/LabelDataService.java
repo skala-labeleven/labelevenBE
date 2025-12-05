@@ -1,4 +1,4 @@
-﻿package com.labeleven.service;
+package com.labeleven.service;
 
 import com.labeleven.dto.LabelDataDTO;
 import com.labeleven.entity.LabelData;

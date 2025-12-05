@@ -1,4 +1,4 @@
-﻿package com.labeleven.repository;
+package com.labeleven.repository;
 
 import com.labeleven.entity.LabelData;
 import org.springframework.data.jpa.repository.JpaRepository;

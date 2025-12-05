@@ -1,4 +1,4 @@
-﻿package com.labeleven.security;
+package com.labeleven.security;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;

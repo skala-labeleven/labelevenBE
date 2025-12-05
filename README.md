@@ -1,4 +1,4 @@
-﻿# LabelEven Backend
+# LabelEven Backend
 
 수출용 라벨 규격 진단 시스템 백엔드 API
 
@@ -36,6 +36,7 @@ labelevenBE/
 ## 설정
 
 1. MariaDB 데이터베이스 생성:
+
 ```sql
 CREATE DATABASE labeleven CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```
@@ -58,12 +59,14 @@ mvn spring-boot:run
 ## API 엔드포인트
 
 ### 인증 (Auth)
+
 - POST /api/auth/login - 로그인
 - POST /api/auth/register - 회원가입
 - GET /api/auth/check-username - 사용자명 중복 확인
 - GET /api/auth/check-email - 이메일 중복 확인
 
 ### 프로젝트 (Project)
+
 - POST /api/projects/upload - 프로젝트 생성 및 파일 업로드
 - GET /api/projects - 사용자의 프로젝트 목록 조회
 - GET /api/projects/{id} - 프로젝트 상세 조회
@@ -71,10 +74,12 @@ mvn spring-boot:run
 - POST /api/projects/{id}/images - 이미지 업로드
 
 ### 라벨 데이터 (Label Data)
+
 - GET /api/label-data/project/{projectId} - 프로젝트의 라벨 데이터 조회
 - GET /api/label-data/{id} - 라벨 데이터 상세 조회
 
 ### 사용자 (User)
+
 - GET /api/users/me - 현재 사용자 정보 조회
 
 ## 인증

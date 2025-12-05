@@ -1,4 +1,4 @@
-﻿package com.labeleven.entity;
+package com.labeleven.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

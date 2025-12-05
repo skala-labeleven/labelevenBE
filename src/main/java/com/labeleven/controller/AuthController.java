@@ -1,4 +1,4 @@
-﻿package com.labeleven.controller;
+package com.labeleven.controller;
 
 import com.labeleven.dto.ApiResponse;
 import com.labeleven.dto.AuthDTO;

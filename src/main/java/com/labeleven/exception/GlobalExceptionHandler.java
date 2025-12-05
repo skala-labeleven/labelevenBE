@@ -1,4 +1,4 @@
-﻿package com.labeleven.exception;
+package com.labeleven.exception;
 
 import com.labeleven.dto.ApiResponse;
 import org.springframework.http.HttpStatus;

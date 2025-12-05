@@ -1,4 +1,4 @@
-﻿package com.labeleven.security;
+package com.labeleven.security;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

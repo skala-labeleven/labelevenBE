@@ -1,4 +1,4 @@
-﻿-- LabelEven 데이터베이스 초기화 스크립트 (AWS RDS MariaDB)
+-- LabelEven 데이터베이스 초기화 스크립트 (AWS RDS MariaDB)
 -- MySQL 클라이언트 또는 DBeaver에서 실행하세요
 
 -- 연결 명령어:
