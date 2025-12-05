@@ -1,0 +1,54 @@
+﻿spring:
+  application:
+    name: labeleven-backend
+
+  datasource:
+    url: jdbc:mariadb://ac4e0dfc165124d80a3c52c7409e1675-174437012.ap-northeast-2.elb.amazonaws.com:3306/labeleven?characterEncoding=UTF-8&serverTimezone=Asia/Seoul&useSSL=false
+    username: root
+    password: labelable
+    driver-class-name: org.mariadb.jdbc.Driver
+    hikari:
+      connection-timeout: 30000
+      maximum-pool-size: 10
+      minimum-idle: 5
+      connection-test-query: SELECT 1
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: true
+    open-in-view: false
+
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+      enabled: true
+
+jwt:
+  secret: labeleven-secret-key-for-jwt-token-generation-minimum-256-bits-required-for-hs256-algorithm-security
+  expiration: 86400000
+
+aws:
+  s3:
+    bucket: labeleven-bucket
+    region: ap-northeast-2
+    access-key: YOUR_ACCESS_KEY
+    secret-key: YOUR_SECRET_KEY
+
+server:
+  port: 8080
+  error:
+    include-message: always
+    include-binding-errors: always
+
+logging:
+  level:
+    com.labeleven: DEBUG
+    org.springframework.web: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE

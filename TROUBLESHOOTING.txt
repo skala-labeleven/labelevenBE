@@ -1,0 +1,108 @@
+﻿========================================================================================
+AWS RDS MariaDB 연결 문제 해결 가이드
+========================================================================================
+
+✅ AWS RDS 정보 확인됨:
+   Host: ac4e0dfc165124d80a3c52c7409e1675-174437012.ap-northeast-2.elb.amazonaws.com
+   Port: 3306
+   User: root
+   Type: LoadBalancer
+
+해결 방법:
+
+1. application.yml 비밀번호 설정
+   ✅ 파일이 이미 업데이트되었습니다!
+   
+   아래 명령어로 파일을 열어 비밀번호를 입력하세요:
+   notepad src\main\resources\application.yml
+   
+   찾을 내용:
+   password: YOUR_RDS_PASSWORD_HERE
+   
+   변경할 내용:
+   password: 실제RDS비밀번호
+
+2. RDS 보안 그룹 확인
+   ⚠️ 중요: AWS RDS 보안 그룹에서 현재 IP 허용 필요
+   
+   AWS Console > RDS > 데이터베이스 > 보안 그룹
+   - Inbound Rules에 현재 개발 PC IP 추가
+   - Type: MySQL/Aurora (3306)
+   - Source: 내 IP 또는 0.0.0.0/0 (테스트용)
+
+3. RDS 퍼블릭 액세스 확인
+   AWS Console > RDS > 데이터베이스
+   - Publicly accessible: Yes 로 설정되어 있어야 함
+
+4. 데이터베이스 생성 확인
+   MySQL 클라이언트로 연결:
+   
+   mysql -h ac4e0dfc165124d80a3c52c7409e1675-174437012.ap-northeast-2.elb.amazonaws.com -P 3306 -u root -p
+   
+   연결 후:
+   CREATE DATABASE IF NOT EXISTS labeleven CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+   SHOW DATABASES;
+   USE labeleven;
+
+5. Spring Boot 실행
+   mvn clean spring-boot:run
+
+========================================================================================
+보안 권장사항:
+========================================================================================
+
+1. 환경변수 사용 (중요!)
+   application.yml에 비밀번호를 직접 입력하는 대신:
+   
+   datasource:
+     password: ${DB_PASSWORD}
+   
+   그리고 환경변수 설정:
+   $env:DB_PASSWORD="실제비밀번호"
+   mvn spring-boot:run
+
+2. application-local.yml 사용
+   - src/main/resources/application-local.yml 생성
+   - 실제 비밀번호 입력
+   - .gitignore에 추가하여 Git에 커밋되지 않도록
+
+   실행:
+   mvn spring-boot:run -Dspring-boot.run.arguments="--spring.profiles.active=local"
+
+========================================================================================
+연결 테스트 도구:
+========================================================================================
+
+1. MySQL Workbench
+   - Connection Name: LabelEven RDS
+   - Hostname: ac4e0dfc165124d80a3c52c7409e1675-174437012.ap-northeast-2.elb.amazonaws.com
+   - Port: 3306
+   - Username: root
+   - Password: [실제 비밀번호]
+
+2. DBeaver (추천)
+   - 무료, 강력한 DB 관리 도구
+   - https://dbeaver.io/download/
+
+3. MySQL CLI
+   mysql -h ac4e0dfc165124d80a3c52c7409e1675-174437012.ap-northeast-2.elb.amazonaws.com -P 3306 -u root -p
+
+========================================================================================
+문제가 계속되면:
+========================================================================================
+
+1. RDS 엔드포인트 확인
+   AWS Console에서 실제 RDS 엔드포인트 주소 재확인
+
+2. VPC 및 서브넷 확인
+   RDS가 퍼블릭 서브넷에 있는지 확인
+
+3. 타임아웃 에러 시
+   - 보안 그룹 인바운드 규칙 재확인
+   - 로컬 방화벽 확인
+
+4. 인증 에러 시
+   - RDS 마스터 사용자 이름 확인
+   - 비밀번호 재설정 고려
+
+========================================================================================

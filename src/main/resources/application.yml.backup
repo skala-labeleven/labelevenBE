@@ -1,0 +1,37 @@
+﻿spring:
+  application:
+    name: labeleven-backend
+  
+  datasource:
+    url: jdbc:mariadb://localhost:3306/labeleven?characterEncoding=UTF-8
+    username: root
+    password: your_password
+    driver-class-name: org.mariadb.jdbc.Driver
+  
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MariaDBDialect
+  
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+
+jwt:
+  secret: your-secret-key-minimum-256-bits-long-for-hs256-algorithm
+  expiration: 86400000
+
+aws:
+  s3:
+    bucket: labeleven-bucket
+    region: ap-northeast-2
+    access-key: YOUR_ACCESS_KEY
+    secret-key: YOUR_SECRET_KEY
+
+server:
+  port: 8080
